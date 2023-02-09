@@ -3,5 +3,12 @@
 
 '''
 API-Key:
-c2ee8a00-a74e-4f23-802e-a1f1aff1835b
+Insert API key into api_key.json
+'''
+
+
+'''
+Run these in the virtual enviroment:
+pip install pandas
+pip install firebase_admin
 '''
