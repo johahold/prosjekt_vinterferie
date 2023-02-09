@@ -11,4 +11,5 @@ Insert API key into api_key.json
 Run these in the virtual enviroment:
 pip install pandas
 pip install firebase_admin
+pip install requests
 '''
