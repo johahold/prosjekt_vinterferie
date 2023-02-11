@@ -5,13 +5,17 @@ from api_collector import *
 fil = read_json("api_key.json")
 api_key = fil["key"][0]
 
-active_auctions = api_collect_auctions(api_key)
+# active_auctions = api_collect_auctions(api_key, ["Terminator", "Hyperion", "Claymore"])
 
-with open('auctions_info.json', 'w') as outfile:
-    json.dump(active_auctions, outfile)
+# with open('auctions_info.json', 'w') as outfile:
+#     json.dump(active_auctions, outfile)
 
-bazaar_info = api_collect_bazaar(api_key)
+# bazaar_info = api_collect_bazaar(api_key)
 
-with open('bazaar_info.json', 'w') as outfile:
-    json.dump(bazaar_info, outfile)
+# with open('bazaar_info.json', 'w') as outfile:
+#     json.dump(bazaar_info, outfile)
 
+data = merge_data_json(api_collect_bazaar(api_key), api_collect_auctions(api_key, ["Terminator", "Hyperion", "Claymore"]))
+
+with open('data.json','w') as outfile:
+    json.dump(data, outfile)
