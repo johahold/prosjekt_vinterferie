@@ -30,6 +30,9 @@ def api_collect_auctions(api_key, tracked_items):
     auctions = {}
     auctions_id = [temp["auctions"][i]["uuid"] for i in range(len(temp["auctions"]))]
     # auctions_constructor(auctions_id, tracked_items, temp, 0)
+
+    
+
     for id in auctions_id:
         for u in range(len(tracked_items)):
             if tracked_items[u] in temp["auctions"][0]["item_name"]:
@@ -49,11 +52,15 @@ def api_collect_auctions(api_key, tracked_items):
                     "bids":temp["auctions"][0]["bids"],
                 }
 
+    print(temp["totalPages"])
+
     for i in range(1, temp["totalPages"]):
         response = get(f"https://api.hypixel.net/skyblock/auctions?key={api_key}&page={i}")
         temp = response.json()
         auctions_id = [temp["auctions"][i]["uuid"] for i in range(len(temp["auctions"]))]
         i = 0
+        assert temp["success"] == True
+
         # auctions_constructor(auctions_id, tracked_items, temp, i)
         for id in auctions_id:
             for u in range(len(tracked_items)):
